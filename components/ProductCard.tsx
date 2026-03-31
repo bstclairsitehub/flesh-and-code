@@ -14,8 +14,8 @@ export default function ProductCard({
   category,
 }: ProductCardProps): JSX.Element {
   return (
-    <div className="terminal-card rounded-sm overflow-hidden group">
-      <div className="aspect-square bg-terminal flex items-center justify-center overflow-hidden relative">
+    <div className="terminal-card rounded-sm overflow-hidden group hover:scale-[1.02] hover:-translate-y-1 transition-all duration-500">
+      <div className="aspect-square bg-terminal flex items-center justify-center overflow-hidden relative group-hover:scale-105 transition-transform duration-500">
         <div className="text-center text-static font-mono text-sm">
           [{image}]
         </div>

@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }): JSX.Element {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <body className="bg-void text-static">
         <Header />
         <main className="pt-20 min-h-screen">{children}</main>

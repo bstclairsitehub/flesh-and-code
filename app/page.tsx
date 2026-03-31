@@ -1,6 +1,9 @@
+'use client';
+
 import ProductCard from '@/components/ProductCard';
 import PostCard from '@/components/PostCard';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 const products = [
   {
@@ -46,6 +49,23 @@ const posts = [
 ];
 
 export default function Home(): JSX.Element {
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    const elements = document.querySelectorAll('.scroll-reveal');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
     <>
       {/* Hero Section */}
@@ -57,21 +77,21 @@ export default function Home(): JSX.Element {
 
         <div className="relative z-10 text-center px-6 max-w-4xl">
           <h1
-            className="text-7xl md:text-8xl font-mono font-bold text-matrix tracking-widest mb-8 leading-tight"
+            className="glitch fade-up text-7xl md:text-8xl font-mono font-bold text-matrix tracking-widest mb-8 leading-tight"
             data-text="FLESH & CODE"
           >
             FLESH & CODE
           </h1>
 
-          <p className="text-chrome text-xl md:text-2xl font-light tracking-wide mb-12 max-w-2xl mx-auto">
+          <p className="fade-up fade-up-delay-1 text-chrome text-xl md:text-2xl font-light tracking-wide mb-12 max-w-2xl mx-auto">
             Engineered for the Body. Built for the Network.
           </p>
 
-          <button className="btn-matrix text-base md:text-lg px-12 py-4 uppercase tracking-widest font-bold shadow-lg">
+          <button className="fade-up fade-up-delay-2 btn-matrix text-base md:text-lg px-12 py-4 uppercase tracking-widest font-bold shadow-lg">
             Access Collection
           </button>
 
-          <div className="mt-20 text-static text-sm font-mono tracking-wider">
+          <div className="fade-up fade-up-delay-3 mt-20 text-static text-sm font-mono tracking-wider">
             <p>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _</p>
             <p className="mt-2">FASHION.SYS v2.4 | INITIATED</p>
           </div>
@@ -81,7 +101,7 @@ export default function Home(): JSX.Element {
       {/* Products Section */}
       <section className="py-20 bg-void">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16">
+          <div className="scroll-reveal mb-16">
             <p className="text-matrix font-mono text-sm tracking-widest uppercase mb-2">
               Collection
             </p>
@@ -92,7 +112,9 @@ export default function Home(): JSX.Element {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {products.map((product) => (
-              <ProductCard key={product.id} {...product} />
+              <div key={product.id} className="scroll-reveal">
+                <ProductCard {...product} />
+              </div>
             ))}
           </div>
 
@@ -109,7 +131,7 @@ export default function Home(): JSX.Element {
       {/* Blog/Signal Section */}
       <section className="py-20 bg-void">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-16">
+          <div className="scroll-reveal mb-16">
             <p className="text-signal font-mono text-sm tracking-widest uppercase mb-2">
               Signal
             </p>
@@ -120,7 +142,9 @@ export default function Home(): JSX.Element {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {posts.map((post) => (
-              <PostCard key={post.slug} {...post} />
+              <div key={post.slug} className="scroll-reveal">
+                <PostCard {...post} />
+              </div>
             ))}
           </div>
 
@@ -136,7 +160,7 @@ export default function Home(): JSX.Element {
 
       {/* CTA Section */}
       <section className="py-20 bg-terminal border-y border-matrix/30">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-6 text-center scroll-reveal">
           <h2 className="text-4xl md:text-5xl font-mono font-bold text-matrix mb-6 tracking-wider">
             Join the Network
           </h2>
