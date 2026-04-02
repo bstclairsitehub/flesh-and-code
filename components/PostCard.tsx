@@ -17,7 +17,7 @@ export default function PostCard({
 }: PostCardProps): JSX.Element {
   return (
     <Link href={`/blog/${slug}`}>
-      <div className="terminal-card p-8 rounded-sm cursor-pointer h-full">
+      <div className="group terminal-card p-8 rounded-sm cursor-pointer h-full hover:-translate-y-2 hover:shadow-2xl transition-all duration-500">
         <div className="flex flex-col h-full">
           <div className="mb-4">
             <p className="text-signal font-mono text-xs tracking-wider uppercase mb-2">

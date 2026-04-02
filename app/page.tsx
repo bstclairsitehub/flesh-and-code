@@ -99,7 +99,7 @@ export default function Home(): JSX.Element {
       </section>
 
       {/* Products Section */}
-      <section className="py-20 bg-void">
+      <section className="py-20 bg-void border-t border-matrix/20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="scroll-reveal mb-16">
             <p className="text-matrix font-mono text-sm tracking-widest uppercase mb-2">
@@ -129,7 +129,7 @@ export default function Home(): JSX.Element {
       </section>
 
       {/* Blog/Signal Section */}
-      <section className="py-20 bg-void">
+      <section className="py-20 bg-terminal border-t border-matrix/20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="scroll-reveal mb-16">
             <p className="text-signal font-mono text-sm tracking-widest uppercase mb-2">
